@@ -4,6 +4,8 @@ A **Favourite Student List** application built with React JS demonstrating routi
 
 ---
 
+live demo : https://fav-student-list-psi.vercel.app/
+
 ## 🚀 Live Features
 
 - 🌿 **Light / Dark Theme** — Toggle between soft green and midnight purple themes, saved to localStorage

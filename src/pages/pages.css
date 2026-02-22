@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+:root,
+[data-theme="light"] {
+  --bg:         #f2fbf6;
+  --card-bg:    #ffffff;
+  --navbar-bg:  #2d6a4f;
+  --accent:     #52b788;
+  --text:       #1b4332;
+  --text-muted: #4a7c5e;
+  --border:     #b7e4c7;
+  --input-bg:   #ffffff;
+  --hero-bg:    #d8f3dc;
+  --badge-bg:   #b7e4c7;
+}
+
+[data-theme="dark"] {
+  --bg:         #0f0a1e;
+  --card-bg:    #1e1030;
+  --navbar-bg:  #2d1b4e;
+  --accent:     #c084fc;
+  --text:       #f5d0fe;
+  --text-muted: #c4b5d4;
+  --border:     #7e22ce;
+  --input-bg:   #2d1b4e;
+  --hero-bg:    #1a0d30;
+  --badge-bg:   #3b1f6e;
+}
+
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+
+.page-hero {
+  background: var(--hero-bg);
+  padding: 2rem 2rem 1.8rem;
+  transition: background 0.3s;
+}
+
+.page-hero--accent {
+  background: var(--hero-bg);
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.page-desc {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+
+.page-main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.9rem;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--input-bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  transition: border 0.2s, background 0.3s;
+  outline: none;
+}
+
+.search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: var(--text-muted); }
+
+.search-clear {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.search-clear:hover { color: var(--text); }
+
+.filter-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--input-bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border 0.2s, background 0.3s;
+  outline: none;
+  flex: 1;
+  min-width: 160px;
+}
+
+.filter-select:focus { border-color: var(--accent); }
+
+.results-info {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.25rem;
+}
+
+
+.student-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  border: 2px solid transparent;
+  cursor: pointer;
+  animation: cardIn 0.3s ease both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+.student-card--fav { border-color: var(--accent); }
+
+.card-header {
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.student-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.roll-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: var(--badge-bg);
+  color: var(--text-muted);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.grade-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--card-bg);
+  border: 1.5px solid;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.card-body {
+  padding: 0.9rem 1.2rem 1.2rem;
+}
+
+.student-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.student-major {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 0.85rem;
+}
+
+
+.fav-btn {
+  width: 100%;
+  padding: 0.55rem;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fav-btn--add {
+  background: var(--accent);
+  color: white;
+}
+
+.fav-btn--add:hover { filter: brightness(1.1); transform: scale(1.02); }
+
+.fav-btn--remove {
+  background: #fff0f0;
+  color: #e53935;
+  border: 1.5px solid #ffcdd2;
+}
+
+.fav-btn--remove:hover { background: #ffcdd2; }
+
+
+.empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.empty-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.back-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: filter 0.2s;
+}
+
+.back-btn:hover { filter: brightness(1.1); }
+
+
+@media (max-width: 600px) {
+  .page-main { padding: 1.25rem; }
+  .student-grid { grid-template-columns: 1fr 1fr; }
+  .filter-row { flex-direction: column; }
+}
+
+@media (max-width: 400px) {
+  .student-grid { grid-template-columns: 1fr; }
+}
